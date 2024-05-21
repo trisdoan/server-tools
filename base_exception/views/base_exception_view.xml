@@ -37,6 +37,7 @@
                         <group>
                             <field name="active" invisible="1" />
                             <field name="description" />
+                            <field name="ignore_rule_id" />
                         </group>
                     </group>
                     <field name="exception_type" invisible="1" />

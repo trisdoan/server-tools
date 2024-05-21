@@ -21,6 +21,7 @@
         "security/ir.model.access.csv",
         "wizard/base_exception_confirm_view.xml",
         "views/base_exception_view.xml",
+        "views/ignore_rule_views.xml",
     ],
     "installable": True,
 }

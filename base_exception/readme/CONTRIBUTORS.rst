@@ -14,3 +14,4 @@
 
 * Kevin Khao <kevin.khao@akretion.com>
 * Laurent Mignon <laurent.mignon@acsone.eu>
+* Tris Doan <tridm@trobz.com>

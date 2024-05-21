@@ -55,6 +55,15 @@ class BaseExceptionMethod(models.AbstractModel):
             records_with_exception = self._detect_exceptions(rule_info)
             to_remove = records_with_rule_in_exceptions - records_with_exception
             to_add = records_with_exception - records_with_rule_in_exceptions
+
+            # Filter records based on ignore.rule domains
+            if rule_info.ignore_rule_id:
+                ignore_rule = self.env["ignore.rule"].browse(rule_info.ignore_rule_id)
+                ignored_domain = safe_eval(ignore_rule.domain)
+                ignored_records = main_records.filtered_domain(ignored_domain)
+                records_with_exception -= ignored_records
+                to_remove |= ignored_records
+
             # we expect to always work on the same model type
             if rule_info.id not in rules_to_remove:
                 rules_to_remove[rule_info.id] = main_records.browse()

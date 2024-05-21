@@ -49,6 +49,7 @@ class ExceptionRule(models.Model):
     is_blocking = fields.Boolean(
         help="When checked the exception can not be ignored",
     )
+    ignore_rule_id = fields.Many2one("ignore.rule", string="Ignore rule", copy=False)
 
     @api.constrains("exception_type", "domain", "code", "model")
     def check_exception_type_consistency(self):
@@ -119,6 +120,7 @@ class ExceptionRule(models.Model):
             "method": self.method,
             "code": self.code,
             "is_blocking": self.is_blocking,
+            "ignore_rule_id": self.ignore_rule_id.id,
         }
 
     @api.model_create_multi
